@@ -1,2 +1,2 @@
-import Album from './Album';
-export default Album;
+import Login from './Login';
+export default Login;
