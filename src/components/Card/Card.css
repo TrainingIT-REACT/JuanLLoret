@@ -1,0 +1,10 @@
+.Card {
+  padding: 1rem;
+  border: thin solid #555;
+  background-color: #777;
+}
+
+.Card__title {
+  margin: 0 0 .8rem;
+  color: #fff;
+}

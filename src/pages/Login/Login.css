@@ -1,0 +1,21 @@
+.LoginPage {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #555;
+  background-image: url('http://lorempixel.com/1200/800/city'), linear-gradient(to bottom, #09BC8A, #B48EAE);
+
+  background-size: cover;
+}
+
+.LoginPage__Card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+}
+
+.LoginPage__title {
+  color: #fff;
+}

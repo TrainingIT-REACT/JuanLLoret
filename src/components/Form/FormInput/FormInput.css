@@ -1,0 +1,46 @@
+.FormInput {
+  position: relative;
+}
+
+.FormInput:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.FormInput__label {
+  font-size: .8rem;
+  font-weight: bold;
+  color: #fff;
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.FormInput__input {
+  display: block;
+  margin: 0;
+  border: 0;
+  border-bottom: 2px solid #555;
+  background-color: #555;
+  padding: .3rem .4rem;
+  font-size: 1rem;
+  line-height: 1.2;
+  transition: background-color .2s ease-in-out;
+}
+
+.FormInput__input:focus {
+  background-color: #666;
+}
+
+.FormInput__focus {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #09BC8A;
+  transition: all .2s ease-in-out;
+}
+
+.FormInput__input:focus ~ .FormInput__focus {
+  left: 0;
+  width: 100%;
+}
