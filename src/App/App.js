@@ -1,61 +1,42 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+import * as Pages from '../pages';
+import {PrivateRoute, PublicRoute} from './Routes';
+import {UserContext} from '../context/User';
 
 // Css
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      albums: []
-    }
-  }
-
-  async componentDidMount() {
-    try {
-      const res = await fetch('/albums');
-      const json = await res.json();
-      this.setState((prevState) => ({
-        ...prevState,
-        loading: false,
-        albums: json
-      }));
-    } catch(err) {
-      console.error("Error accediendo al servidor", err);
-    }
-  }
-
   render() {
     return (
-      <div className="App">
-        <h1>Plantilla de la práctica final!</h1>
-        <p>
-          Esta plantilla contiene todo lo necesario para comenzar a
-          desarrollar la práctica final. Antes de comenzar a desarrollar,
-          lee la documentación de la práctica y el fichero README.md de
-          este repositorio.
-        </p>
-        <h2>Servidor de desarrollo</h2>
-        <p>
-          El proyecto está preconfigurado con un servidor de desarrollo basado
-          en json-server:
-        </p>
-          { this.state.loading ?
-            <p>Cargando...</p>
-            : <ul>
-              {this.state.albums.map(album => <li key={album.id}>{album.name}</li>)}
-            </ul>
-          }
-        <h2>¿Dudas?</h2>
-        <p>
-          No olvides pasarte por el foro si tienes alguna duda sobre la práctica final
-          o la plantilla :).
-        </p>
-      </div>
+      <UserContext.Provider value={this.props.user}>
+        <Router>
+          <>
+            <main>
+              <Switch>
+                <PublicRoute path="/" exact component={Pages.Login} />
+                <PrivateRoute path="/home" component={Pages.Home} />
+                <PrivateRoute path="/albums" exact component={Pages.AlbumList} />
+                <PrivateRoute path="/albums/:id([0-9]*)" component={Pages.Album} />
+                <PrivateRoute path="/player" component={Pages.Player} />
+                <PrivateRoute path="/user" component={Pages.User} />
+                <Route component={Pages.NotFound} />
+              </Switch>
+            </main>
+          </>
+        </Router>
+      </UserContext.Provider>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+};
+
+export default connect(mapStateToProps)(App);
