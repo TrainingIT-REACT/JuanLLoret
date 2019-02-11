@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
-import {UserContext} from '../context/User';
+import {UserContext} from '../context/UserContext';
 
 export const PrivateRoute = ({component: Component, ...otherProps}) => (
-  <UserContext.Consume>
+  <UserContext.Consumer>
     {user => {
       if (user.signedIn) {
         return <Route component={Component} {...otherProps} />
@@ -15,17 +15,17 @@ export const PrivateRoute = ({component: Component, ...otherProps}) => (
         }
       }} />
     }}
-  </UserContext.Consume>
+  </UserContext.Consumer>
 );
 
 export const PublicRoute = ({component: Component, ...otherProps}) => (
-  <UserContext.Consume>
+  <UserContext.Consumer>
     {user => {
       if (!user.signedIn) {
         return <Route component={Component} {...otherProps} />
       }
       return <Redirect to={'/home'} />
     }}
-  </UserContext.Consume>
+  </UserContext.Consumer>
 );
 

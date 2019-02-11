@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import * as Pages from '../pages';
 import {PrivateRoute, PublicRoute} from './Routes';
-import {UserContext} from '../context/User';
+import UserContext from '../context/UserContext';
 
 // Css
 import './App.css';
