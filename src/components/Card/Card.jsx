@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Card.css';
+import './Card.scss';
 
 const Card = ({children, title, TitleTag, className}) => (
   <div className={`Card ${className}`}>

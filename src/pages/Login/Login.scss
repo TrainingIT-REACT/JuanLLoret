@@ -1,0 +1,52 @@
+@import "../../utils/styles/index";
+
+.LoginPage {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: $matterhorn;
+  background-size: cover;
+
+  &__Card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__Form {
+    margin-top: 2rem;
+  }
+
+  &__Button {
+    margin-top: 1rem;
+  }
+
+  @include media-query(tablet, up) {
+    background-image:
+      linear-gradient(320deg, transparent 50%, $dark),
+      linear-gradient(to right, $primary-light, transparent),
+      url('/img/login-background.jpg');
+
+    &__Card {
+      top: 50%;
+      left: 50%;
+      width: 70%;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @include media-query(laptop, up) {
+    &__Card {
+      width: 60%;
+    }
+  }
+
+  @include media-query(screen, up) {
+    &__Card {
+      width: 35%;
+    }
+  }
+}

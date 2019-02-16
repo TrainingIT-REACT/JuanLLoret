@@ -1,0 +1,56 @@
+@import "variables";
+
+$ranges: ('only', 'down', 'up');
+$devices: (
+        smartphone: (
+                max: $breakpoint-tiny - 1
+        ),
+        phablet: (
+                min: $breakpoint-tiny,
+                max: $breakpoint-small - 1
+        ),
+        tablet: (
+                min: $breakpoint-small,
+                max: $breakpoint-medium - 1
+        ),
+        laptop: (
+                min: $breakpoint-medium,
+                max: $breakpoint-large - 1
+        ),
+        screen: (
+                min: $breakpoint-large
+        )
+);
+
+@mixin media-query($device, $range, $media-type: 'screen') {
+
+  @if (type-of($device) != string or not map-has-key($devices, $device)) {
+    @error "$device parameter for ui-media-query mixin must be one of: " + #{map-keys($devices)};
+  }
+
+  @if (type-of($range) != string or index($ranges, $range) == null) {
+    @error "$range parameter for ui-media-query mixin must be one of: " + #{$ranges};
+  }
+
+  @if ($device == 'screen' and $range == 'down' or $device == 'smartphone' and $range == 'up') {
+    @error "ui-media-query(" + #{$device} + ", " + #{$range} + ") is unnecessary, it applies to all devices!";
+  }
+
+  $mapped-device: map-get($devices, $device);
+
+  $query-string: '';
+  @if (($range == 'only' or $range == 'up') and map-has-key($mapped-device, min)) {
+    $query-string: '(min-width: #{map-get($mapped-device, min)})';
+  }
+
+  @if (($range == 'only' or $range == 'down') and map-has-key($mapped-device, max)) {
+    @if (str-length($query-string) > 0) {
+      $query-string: $query-string + ' and ';
+    }
+    $query-string: '#{$query-string}(max-width: #{map-get($mapped-device, max)})';
+  }
+
+  @media #{$media-type} and #{$query-string} {
+    @content
+  }
+}

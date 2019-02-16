@@ -1,0 +1,79 @@
+@import "../../../utils/styles/index";
+
+.Button {
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  border: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: $matterhorn;
+  transition: all .2s ease-in-out;
+  padding: 0;
+
+  &:hover, &:focus {
+    cursor: pointer;
+    color: $white;
+    outline: 0;
+  }
+  &:active {
+    color: $white;
+  }
+
+  &--primary {
+    background-color: $primary-light;
+    &:hover, &:focus {
+      background-color: $primary;
+    }
+    &:focus {
+      box-shadow: 0 0 5px 3px $primary-light;
+    }
+    &:active {
+      background-color: $primary-dark;
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-light;
+    &:hover, &:focus {
+      background-color: $secondary;
+    }
+    &:focus {
+      box-shadow: 0 0 3px $secondary-light;
+    }
+    &:active {
+      background-color: $secondary-dark;
+    }
+  }
+
+  &--default {
+    line-height: 2;
+    height: 32px;
+
+    .Button__loader {
+      height: 32px;
+    }
+  }
+
+  &--medium {
+    line-height: 2.5;
+    height: 40px;
+
+    .Button__loader {
+      height: 40px;
+    }
+  }
+
+  &--large {
+    line-height: 3;
+    height: 48px;
+
+    .Button__loader {
+      height: 48px;
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
+}

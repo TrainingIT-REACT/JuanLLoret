@@ -6,9 +6,6 @@ import * as Pages from '../pages';
 import {PrivateRoute, PublicRoute} from './Routes';
 import UserContext from '../context/UserContext';
 
-// Css
-import './App.css';
-
 class App extends Component {
   render() {
     return (

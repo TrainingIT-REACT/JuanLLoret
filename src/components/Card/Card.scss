@@ -1,0 +1,19 @@
+@import "../../utils/styles/index";
+
+.Card {
+  padding: 2rem;
+  box-shadow: 0 0 5px $dark;
+  background-color: $dark;
+
+  &__title {
+    margin: 0 0 .8rem;
+    color: $white;
+    text-align: center;
+  }
+
+  @include media-query(tablet, up) {
+    &__title {
+      text-align: left;
+    }
+  }
+}
