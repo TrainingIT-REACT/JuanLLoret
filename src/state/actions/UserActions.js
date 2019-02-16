@@ -7,10 +7,10 @@ export const loginRequest = () => ({
   type: actionTypes.LOGIN_REQUEST
 });
 
-export const loginSuccess = (nickname, password) => ({
+export const loginSuccess = (nickname, token) => ({
   type: actionTypes.LOGIN_SUCCESS,
   nickname,
-  password
+  token
 });
 
 export const login = (nickname, password) => {
@@ -18,17 +18,18 @@ export const login = (nickname, password) => {
     dispatch(loginRequest());
     // faked fetch
     setTimeout(() => {
-      localStorage.setItem(APP_USER_NAME, nickname);
-      localStorage.setItem(APP_TOKEN, btoa(password));
-      dispatch(loginSuccess(nickname, password));
+      const token = btoa(password);
+      sessionStorage.setItem(APP_USER_NAME, nickname);
+      sessionStorage.setItem(APP_TOKEN, token);
+      dispatch(loginSuccess(nickname, token));
     }, 2000);
   }
 };
 
 export const restoreSession = () => {
   return (dispatch) => {
-    const nickname = localStorage.getItem(APP_USER_NAME);
-    const token = localStorage.getItem(APP_TOKEN);
+    const nickname = sessionStorage.getItem(APP_USER_NAME);
+    const token = sessionStorage.getItem(APP_TOKEN);
     if (nickname && token) {
       dispatch(loginSuccess(nickname, token))
     }
