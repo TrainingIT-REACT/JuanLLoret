@@ -19,7 +19,7 @@ export const login = (nickname, password) => {
     // faked fetch
     setTimeout(() => {
       localStorage.setItem(APP_USER_NAME, nickname);
-      localStorage.setItem(APP_TOKEN, password);
+      localStorage.setItem(APP_TOKEN, btoa(password));
       dispatch(loginSuccess(nickname, password));
     }, 2000);
   }
