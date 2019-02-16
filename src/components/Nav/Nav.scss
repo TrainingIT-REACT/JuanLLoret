@@ -2,4 +2,44 @@
 
 .Nav {
 
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li:not(:last-child) {
+    margin-bottom: .4rem;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__section {
+    &:not(:first-child) {
+      margin-top: .6rem;
+      padding-top: .6rem;
+      border-top: thin dotted $primary-light;
+    }
+  }
+
+  &__link {
+    color: $primary-light;
+    text-decoration: none;
+    display: inline-block;
+    padding: .15rem .4rem;
+    transition: all .2s ease-in-out;
+
+    &--active {
+      color: $dark;
+      background-color: $secondary-dark;
+      color: $white;
+      border-radius: 3px;
+    }
+  }
 }

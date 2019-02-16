@@ -7,14 +7,17 @@ import * as Pages from '../pages';
 import {PrivateRoute, PublicRoute} from './Routes';
 import UserContext from '../context/UserContext';
 
+import './App.scss';
+
 class App extends Component {
   render() {
     return (
       <UserContext.Provider value={this.props.user}>
         <Router>
-          <>
-            <Nav />
-            <main>
+          <div className="App">
+            <Nav className="App__aside" />
+            <main className="App__main">
+
               <Switch>
                 <PublicRoute path="/" exact component={Pages.Login} />
                 <PrivateRoute path="/home" component={Pages.Home} />
@@ -25,7 +28,7 @@ class App extends Component {
                 <Route component={Pages.NotFound} />
               </Switch>
             </main>
-          </>
+          </div>
         </Router>
       </UserContext.Provider>
     );
