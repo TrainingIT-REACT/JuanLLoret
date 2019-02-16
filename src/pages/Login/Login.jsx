@@ -20,8 +20,7 @@ class Login extends React.Component {
       password: {
         value: '',
         error: false
-      },
-      loading: false
+      }
     };
 
     this.onChange = this.onChange.bind(this);
@@ -62,7 +61,7 @@ class Login extends React.Component {
             type="submit"
             size="large"
             fullWidth={true}
-            loading={this.state.loading}
+            loading={this.props.loading}
           >
             Login
           </Button>
@@ -89,23 +88,21 @@ class Login extends React.Component {
     }
 
     if (this.state.nickname.value && this.state.password.value) {
-      this.setState({loading: true});
-      setTimeout(() => {
-        this.props.login(this.state.nickname.value);
-      }, 2000);
+      this.props.login(this.state.nickname.value, this.state.password.value);
     }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    redirect: state.user.signedIn
+    redirect: state.user.signedIn,
+    loading: state.user.loading
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (nickname) => dispatch(login(nickname)),
+    login: (nickname, password) => dispatch(login(nickname, password)),
   }
 };
 

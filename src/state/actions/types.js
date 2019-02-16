@@ -1,8 +1,4 @@
-const types = [
-  "LOGIN"
-];
-
-export default types.reduce((prev, type) => {
-  prev[type] = type;
-  return prev;
-}, {});
+export default {
+  LOGIN_REQUEST: "LOGIN_REQUEST",
+  LOGIN_SUCCESS: "LOGIN_SUCCESS"
+};
