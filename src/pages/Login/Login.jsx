@@ -71,11 +71,16 @@ class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+
     if (!this.state.nickname.value) {
       this.setState({nickname: {error: true}});
-    } else if (!this.state.password.value) {
+    }
+
+    if (!this.state.password.value) {
       this.setState({password: {error: true}});
-    } else if (!this.state.nickname.error && !this.state.password.error) {
+    }
+
+    if (this.state.nickname.value && this.state.password.value) {
       this.setState({loading: true});
       setTimeout(() => {
         this.props.login(this.state.nickname);
