@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
+import Nav from '../components/Nav';
 import * as Pages from '../pages';
 import {PrivateRoute, PublicRoute} from './Routes';
 import UserContext from '../context/UserContext';
@@ -12,6 +13,7 @@ class App extends Component {
       <UserContext.Provider value={this.props.user}>
         <Router>
           <>
+            <Nav />
             <main>
               <Switch>
                 <PublicRoute path="/" exact component={Pages.Login} />
