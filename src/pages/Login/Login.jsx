@@ -30,8 +30,16 @@ class Login extends React.Component {
 
   render() {
     return <div className="LoginPage">
-      <Card className="LoginPage__Card" title="Reactify" TitleTag="h1">
-        <form noValidate className="LoginPage__Form" onSubmit={this.onSubmit}>
+      <Card
+        className="LoginPage__Card"
+        title="Reactify"
+        TitleTag="h1"
+      >
+        <form
+          noValidate
+          className="LoginPage__Form"
+          onSubmit={this.onSubmit}
+        >
           <Input
             id="nickname"
             label="Nickname"
@@ -83,7 +91,7 @@ class Login extends React.Component {
     if (this.state.nickname.value && this.state.password.value) {
       this.setState({loading: true});
       setTimeout(() => {
-        this.props.login(this.state.nickname);
+        this.props.login(this.state.nickname.value);
       }, 2000);
     }
   }
