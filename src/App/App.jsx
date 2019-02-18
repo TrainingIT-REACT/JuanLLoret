@@ -17,7 +17,6 @@ class App extends Component {
           <div className="App">
             <Nav className="App__aside" />
             <main className="App__main">
-
               <Switch>
                 <PublicRoute path="/" exact component={Pages.Login} />
                 <PrivateRoute path="/home" component={Pages.Home} />

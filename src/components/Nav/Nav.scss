@@ -2,14 +2,16 @@
 
 .Nav {
 
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  &__burger-btn {
+    @include media-query(tablet, up) {
+      display: none;
+    }
   }
 
-  li:not(:last-child) {
-    margin-bottom: .4rem;
+  &--open {
+    .Nav__nav {
+      max-height: inherit;
+    }
   }
 
   &__nav {
@@ -17,14 +19,29 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    height: 100%;
+
+    @include media-query(tablet, up) {
+      height: 100%;
+    }
+
+    @include media-query(phablet, down) {
+      max-height: 0;
+    }
   }
 
   &__section {
+    margin: 0;
+    padding: .6rem;
+    list-style-type: none;
+
     &:not(:first-child) {
-      margin-top: .6rem;
-      padding-top: .6rem;
       border-top: thin dotted $primary-light;
+    }
+
+    &-item {
+      &:not(:last-child) {
+        margin-bottom: .6rem;
+      }
     }
   }
 
@@ -36,7 +53,6 @@
     transition: all .2s ease-in-out;
 
     &--active {
-      color: $dark;
       background-color: $secondary-dark;
       color: $white;
       border-radius: 3px;

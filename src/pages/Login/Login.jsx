@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Card from '../../components/Card';
+import Notification from '../../components/Notification';
 import {Input, Button} from '../../components/Form';
 import {login} from '../../state/actions/UserActions';
 
@@ -20,11 +21,22 @@ class Login extends React.Component {
       password: {
         value: '',
         error: false
-      }
+      },
+      error: null
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  renderNotification() {
+    if (!this.state.loading && this.state.error) {
+      return <Notification type="error" message={this.state.error} />
+    }
+    if (!this.state.loading && this.props.location.state && this.props.location.state.message) {
+      return <Notification type="error" message={this.props.location.state.message} />
+    }
+    return null;
   }
 
   render() {
@@ -34,6 +46,7 @@ class Login extends React.Component {
         title="Reactify"
         TitleTag="h1"
       >
+        {this.renderNotification()}
         <form
           noValidate
           className="LoginPage__Form"
@@ -87,7 +100,12 @@ class Login extends React.Component {
       this.setState({password: {error: true}});
     }
 
+    if (!this.state.nickname.value || !this.state.password.value) {
+      this.setState({error: 'Please fill all mandatory fields.'});
+    }
+
     if (this.state.nickname.value && this.state.password.value) {
+      this.setState({error: null});
       this.props.login(this.state.nickname.value, this.state.password.value);
     }
   }
