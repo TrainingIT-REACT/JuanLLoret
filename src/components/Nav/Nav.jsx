@@ -78,6 +78,7 @@ class Nav extends React.Component {
                         className="Nav__link"
                         activeClassName="Nav__link--active"
                         to={item.to}
+                        onClick={this.onClickBurgerBtn}
                       >
                         <i className={item.icon}></i> {item.name}
                       </NavLink>
