@@ -1,0 +1,39 @@
+@import "../../utils/styles/variables";
+
+.AlbumPreview {
+  position: relative;
+  border: 2px solid $dark;
+  background-color: $dark;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    border-color: $primary;
+    outline: 0;
+  }
+
+  &__cover {
+    margin: 0;
+    img {
+      max-width: calc(100% - 1px);
+    }
+  }
+
+  &__info {
+    padding: .7rem;
+  }
+
+  &__title {
+    color: $white;
+    font-weight: bold;
+  }
+
+  &__artist {
+    margin-top: .3rem;
+    font-size: .8rem;
+    padding: .2rem .3rem;
+    border-radius: 3px;
+    background-color: $secondary-dark;
+    color: $white;
+    display: inline-block;
+  }
+}

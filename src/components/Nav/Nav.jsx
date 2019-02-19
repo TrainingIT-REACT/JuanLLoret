@@ -95,7 +95,7 @@ class Nav extends React.Component {
               <li className={`Nav__section-item`}>
                 <Button
                   type="button"
-                  color="secondary"
+                  color="primary"
                   className={`Nav__logout`}
                   onClick={this.onLogout}
                 >
