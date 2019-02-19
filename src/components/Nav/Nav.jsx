@@ -1,8 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 
 import UserContext from '../../context/UserContext';
+import {logout} from '../../state/actions/UserActions';
+import Button from '../../components/Form/Button';
 import Burger from '../../components/Burger';
 
 import './Nav.scss';
@@ -16,6 +19,7 @@ class Nav extends React.Component {
       open: false
     };
 
+    this.onLogout = this.onLogout.bind(this);
     this.onClickBurgerBtn = this.onClickBurgerBtn.bind(this);
   }
 
@@ -87,6 +91,18 @@ class Nav extends React.Component {
                 </ul>
               )
             })}
+            <ul className={`Nav__section`}>
+              <li className={`Nav__section-item`}>
+                <Button
+                  type="button"
+                  color="secondary"
+                  className={`Nav__logout`}
+                  onClick={this.onLogout}
+                >
+                  <i className="fas fa-sign-out-alt"></i> Logout
+                </Button>
+              </li>
+            </ul>
           </nav>
         </aside>
       }}
@@ -96,6 +112,10 @@ class Nav extends React.Component {
   onClickBurgerBtn() {
     const open = !this.state.open;
     this.setState({open});
+  }
+
+  onLogout() {
+    this.props.logout();
   }
 }
 
@@ -107,4 +127,12 @@ Nav.defaultProps = {
   className: ''
 };
 
-export default Nav;
+const mapStateToProps = () => ({});
+const mapDispatchToProps = () => (dispatch) => ({
+  logout: () => {dispatch(logout())}
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);

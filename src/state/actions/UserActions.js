@@ -13,6 +13,10 @@ export const loginSuccess = (nickname, token) => ({
   token
 });
 
+export const logoutSuccess = () => ({
+  type: actionTypes.LOGOUT
+});
+
 export const login = (nickname, password) => {
   return (dispatch) => {
     dispatch(loginRequest());
@@ -33,5 +37,13 @@ export const restoreSession = () => {
     if (nickname && token) {
       dispatch(loginSuccess(nickname, token))
     }
+  }
+};
+
+export const logout = () => {
+  return (dispatch) => {
+    dispatch(logoutSuccess());
+    sessionStorage.removeItem(APP_USER_NAME);
+    sessionStorage.removeItem(APP_TOKEN);
   }
 };

@@ -13,6 +13,8 @@ const reducer = (state = initialState, action) => {
       return {...state, loading: true};
     case actionTypes.LOGIN_SUCCESS:
       return {...state, signedIn: true, nickname: action.nickname, token: action.token, loading: false};
+    case actionTypes.LOGOUT:
+      return {...initialState};
     default:
       return state;
   }
