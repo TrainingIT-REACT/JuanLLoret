@@ -1,4 +1,5 @@
 import actionTypes from './types';
+import {getAlbums} from './AlbumsActions';
 
 export const APP_USER_NAME = 'APP_USER_NAME';
 export const APP_TOKEN = 'APP_TOKEN';
@@ -26,6 +27,7 @@ export const login = (nickname, password) => {
       sessionStorage.setItem(APP_USER_NAME, nickname);
       sessionStorage.setItem(APP_TOKEN, token);
       dispatch(loginSuccess(nickname, token));
+      dispatch(getAlbums());
     }, 2000);
   }
 };
@@ -35,7 +37,8 @@ export const restoreSession = () => {
     const nickname = sessionStorage.getItem(APP_USER_NAME);
     const token = sessionStorage.getItem(APP_TOKEN);
     if (nickname && token) {
-      dispatch(loginSuccess(nickname, token))
+      dispatch(loginSuccess(nickname, token));
+      dispatch(getAlbums());
     }
   }
 };
