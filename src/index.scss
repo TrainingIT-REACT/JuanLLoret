@@ -1,3 +1,5 @@
+@import "./utils/styles/variables";
+
 html, body, #root {
   position: relative;
   height: 100%;
@@ -17,4 +19,9 @@ html, body {
 
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $white;
+  margin: .7rem 0;
 }
