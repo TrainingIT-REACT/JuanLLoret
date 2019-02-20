@@ -11,8 +11,8 @@ const AlbumPreview = ({id, name, artist, cover}) => (
         <img src={cover} alt={`${name} album cover`} />
       </figure>
       <div className="AlbumPreview__info">
-        <header className="AlbumPreview__title">{name}</header>
-        <div className="AlbumPreview__artist">{artist}</div>
+        <header className="AlbumPreview__title" aria-label="Album title">{name}</header>
+        <div className="AlbumPreview__artist" aria-label="Artist">{artist}</div>
       </div>
     </article>
   </Link>

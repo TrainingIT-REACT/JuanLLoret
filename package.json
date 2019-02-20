@@ -19,7 +19,7 @@
   "scripts": {
     "start": "npm-run-all --parallel client server",
     "client": "react-scripts start",
-    "server": "json-server --watch server/data.json --static server/static --port 3001",
+    "server": "json-server --watch server/data.json --static server/static --port 3001 --delay 800",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

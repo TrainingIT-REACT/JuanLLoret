@@ -1,0 +1,67 @@
+@import "../../utils/styles/variables";
+@import "../../utils/styles/mixins";
+
+.Album {
+
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 200px 1fr;
+
+  &__detail {
+    width: 200px;
+  }
+
+  &__cover {
+    margin: 0;
+    height: auto;
+    width: 200px;
+    display: block;
+    border: 2px solid $secondary-dark;
+    border-radius: 3px 3px 0 0;
+  }
+
+  &__artist {
+    display: block;
+    color: $white;
+    font-size: 1.5rem;
+    padding: .7rem .3rem;
+    border-radius: 0 0 3px 3px;
+    background-color: $secondary-dark;
+    text-align: center;
+  }
+
+  &__songs {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: .7rem;
+
+      &:nth-child(odd) {
+        background-color: $ash;
+      }
+
+      &:nth-child(even) {
+        background-color: $grey;
+      }
+    }
+
+    &-track {
+      flex-basis: 30px;
+      width: 30px;
+    }
+
+    &-name {
+      flex-grow: 1;
+    }
+
+    &-duration {
+      flex-basis: 60px;
+      width: 60px;
+    }
+  }
+}

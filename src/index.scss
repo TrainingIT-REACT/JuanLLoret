@@ -25,3 +25,21 @@ h1, h2, h3, h4, h5, h6 {
   color: $white;
   margin: .7rem 0;
 }
+
+.Back-button {
+  color: $white;
+  margin: .7rem 0 .5rem;
+  padding: .2rem .3rem;
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: inherit;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
