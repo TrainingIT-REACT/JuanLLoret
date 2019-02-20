@@ -52,7 +52,18 @@ class Album extends React.Component {
 
   renderSongs() {
     return this.props.songs.map((song, i) => (
-      <li key={i} className="Album__songs-item">
+      <li
+        key={i}
+        className="Album__songs-item"
+        tabIndex="0"
+      >
+        <span
+          className="Album__songs-playing"
+          type="button"
+          aria-label={`Play ${song.name}`}
+        >
+          <i className="fas fa-play"></i>
+        </span>
         <span
           className="Album__songs-track"
           aria-label="track number"
