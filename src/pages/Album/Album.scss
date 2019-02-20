@@ -5,10 +5,15 @@
 
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 100%;
+
+  @include media-query(laptop, up) {
+    grid-template-columns: 200px 1fr;
+  }
 
   &__detail {
     width: 200px;
+    margin: 0 auto;
   }
 
   &__cover {
@@ -70,9 +75,9 @@
       }
     }
 
-    &-track {
-      flex-basis: 30px;
-      width: 30px;
+    &-playing, &-track {
+      flex-basis: 25px;
+      min-width: 25px;
     }
 
     &-name {
@@ -80,8 +85,9 @@
     }
 
     &-duration {
-      flex-basis: 60px;
-      width: 60px;
+      flex-basis: 35px;
+      min-width: 35px;
+      text-align: right;
     }
   }
 }
