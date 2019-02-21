@@ -3,6 +3,13 @@ import actionTypes from '../actions/types';
 export const initialState = {
   signedIn: false,
   nickname: '',
+  first: '',
+  last: '',
+  email: '',
+  city: '',
+  country: '',
+  birthday: '',
+  extract: '',
   token: '',
   loading: false
 };
@@ -14,7 +21,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LOGIN_SUCCESS:
       return {...state, signedIn: true, nickname: action.nickname, token: action.token, loading: false};
     case actionTypes.LOGOUT:
-      return {...initialState};
+      return {...state};
+    case actionTypes.USER_DATA:
+      return {...state, ...action.user};
     default:
       return state;
   }

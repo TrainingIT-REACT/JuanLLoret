@@ -18,6 +18,11 @@ export const logoutSuccess = () => ({
   type: actionTypes.LOGOUT
 });
 
+export const userData = (user) => ({
+  type: actionTypes.USER_DATA,
+  user
+});
+
 export const login = (nickname, password) => {
   return (dispatch) => {
     dispatch(loginRequest());
